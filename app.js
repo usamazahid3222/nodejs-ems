@@ -20,6 +20,7 @@ app.use(
 // Requiring Routes
 
 const UsersRoutes = require('./routes/users.routes');
+const BooksRoutes = require('./routes/books.routes');
 
 // connection to mongoose
 const mongoCon = process.env.mongoCon;
@@ -46,7 +47,10 @@ app.use(accessControls);
 app.use(cors());
 
 // Routes which should handle requests
+
 app.use("/users",UsersRoutes);
+app.use("/books",BooksRoutes);
+
 // app.use("/users", userRoutes);
 
 app.use(errorHandler);

@@ -68,13 +68,21 @@ usersController.registerUser = async (req, res) => {
     });
   } catch (ex) {
     console.log('ex', ex);
-
+    if(ex.code===11000){
+      res
+      .send({
+        message: 'This email has been registered already',
+      })
+      .status(500);
+    }
+    else {
     res
       .send({
         message: 'Error',
         detail: ex
       })
       .status(500);
+  }
   }
 };
 
